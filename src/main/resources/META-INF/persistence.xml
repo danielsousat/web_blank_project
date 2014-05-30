@@ -1,0 +1,39 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+ version="2.1">
+ 
+ <persistence-unit name="MainPU" transaction-type="RESOURCE_LOCAL">
+ 	<!-- 
+ 		Inserir a seguinte configuracao do DataSource no arquivo Context.xml
+ 		do Tomcat, com as devidas alteracoes:
+ 		
+ 		<Resource 
+ 			auth="Container" 
+ 			driverClassName="com.mysql.jdbc.Driver" 
+ 			maxActive="20" 
+ 			maxIdle="10" 
+ 			maxWait="-1" 
+ 			name="jdbc/BlankDS" 
+ 			username="root"
+ 			password="" 
+ 			removeAbandoned="true" 
+ 			removeAbandonedTimeout="60" 
+ 			type="javax.sql.DataSource" 
+ 			url="jdbc:mysql://localhost:3306/java" />
+ 	
+ 	 -->
+ 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+ 	<non-jta-data-source>${jpa.datasource}</non-jta-data-source>
+ 	
+ 	<exclude-unlisted-classes>false</exclude-unlisted-classes>
+ 	
+ 	<properties>
+ 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+ 		<property name="hibernate.show_sql" value="${hibernate.show_sql}"/>
+ 		<property name="hibernate.format_sql" value="${hibernate.format_sql}"/>
+ 	</properties>
+ </persistence-unit>
+ 
+ </persistence>
