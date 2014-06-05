@@ -24,15 +24,15 @@
  			url="jdbc:mysql://localhost:3306/java" />
  	
  	 -->
- 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
- 	<non-jta-data-source>${jpa.datasource}</non-jta-data-source>
- 	
+ 	<provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
+ 	 	
  	<exclude-unlisted-classes>false</exclude-unlisted-classes>
  	
  	<properties>
- 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
- 		<property name="hibernate.show_sql" value="${hibernate.show_sql}"/>
- 		<property name="hibernate.format_sql" value="${hibernate.format_sql}"/>
+ 		<property name="datanucleus.NontransactionalRead" value="true"/>
+        <property name="datanucleus.NontransactionalWrite" value="true"/>
+        <property name="datanucleus.ConnectionURL" value="appengine"/>
+        <property name="datanucleus.singletonEMFForName" value="true"/>
  	</properties>
  </persistence-unit>
  
