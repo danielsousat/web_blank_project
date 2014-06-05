@@ -7,7 +7,15 @@
 	<packaging>war</packaging>
 	<name>Web Blank Project</name>
 	<url>blank.org</url>
-
+	
+	<pluginRepositories>
+        <pluginRepository>
+            <id>google-staging</id>
+            <name>Google Staging</name>
+            <url>https://oss.sonatype.org/content/repositories/comgoogleappengine-1004/</url>
+        </pluginRepository>
+    </pluginRepositories>
+	
 	<properties>
 		<app.name>web-blank-project</app.name>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,13 +27,38 @@
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<jstl.version>1.2</jstl.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
 		<hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
+		<appengine.app.version>1</appengine.app.version>
+        <appengine.target.version>1.9.5</appengine.target.version>
 	</properties>
 
 
 	<dependencies>
-
+		
+		<dependency>
+		    <groupId>com.google.appengine.orm</groupId>
+		    <artifactId>datanucleus-appengine</artifactId>
+		    <version>2.1.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-api-jpa</artifactId>
+		    <version>3.1.3</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>${appengine.target.version}</version>
+        </dependency>
+		
+		<dependency>
+		    <groupId>org.apache.geronimo.specs</groupId>
+		    <artifactId>geronimo-jpa_2.0_spec</artifactId>
+		    <version>1.0</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -133,11 +166,7 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -167,7 +196,13 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-
+			
+			<plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${appengine.target.version}</version>
+            </plugin>
+			
 		</plugins>
 		<finalName>${app.name}</finalName>
 	</build>
