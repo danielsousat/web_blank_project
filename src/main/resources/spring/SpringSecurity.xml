@@ -20,7 +20,7 @@
 </security:authentication-manager>
 
 <bean id="customProvider"
-	class="org.tschiedel.seguranca.CustomAuthenticationProvider">
+	class="${basePackage}.seguranca.CustomAuthenticationProvider">
 
 </bean>
 

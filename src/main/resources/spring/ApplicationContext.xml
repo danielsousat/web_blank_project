@@ -14,7 +14,7 @@
 		<property name="basename" value="messages" />
 	</bean>
 	
-	<import resource="SpringDatabase.xml"/>
+	<!-- <import resource="SpringDatabase.xml"/> -->
 	<import resource="SpringSecurity.xml"/>
 
 </beans>

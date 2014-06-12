@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.tschiedel.seguranca;
+package org.tschiedel.blank.seguranca;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
